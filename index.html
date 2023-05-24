@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+  </head>
+  <body>
+    <h2>Image - Jpeg</h2>
+    <img src="/assets/image.jpg" />
+
+    <h2>Image - Webp</h2>
+    <img src="./assets/image.webp" />
+
+    <h2>Image - Avif</h2>
+    <img src="./assets/image.avif\s" />
+
+    <h2>Picture</h2>
+    <picture>
+      <source srcset="./assets/image.avif" type="image/avif" />
+      <source srcset="./assets/image.webp" type="image/webp" />
+      <img src="./assets/image.jpg" />
+    </picture>
+  </body>
+</html>
