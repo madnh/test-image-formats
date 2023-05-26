@@ -3,23 +3,229 @@
   <head>
     <title>Home</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--<base href="https://raw.githubusercontent.com/madnh/test-image-formats/main/" />-->
+    <base href="./" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <style>
+      .bg-image {
+        width: 500px;
+        max-width: 100%;
+        padding-top: 500px;
+        border: 1px solid #ccc;
+
+        background-color: #aaa;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    </style>
   </head>
   <body>
-    <h2>Image - Jpeg</h2>
-    <img src="/assets/image.jpg" />
+    <div class="container">
+      <section class="section">
+        <h1 class="is-size-1">Test Image Formats</h1>
+        <hr />
+      </section>
 
-    <h2>Image - Webp</h2>
-    <img src="./assets/image.webp" />
+      <section class="section">
+        <h1 class="title">Image - Jpeg</h1>
+        <img src="assets/image.jpg" />
+      </section>
 
-    <h2>Image - Avif</h2>
-    <img src="./assets/image.avif\s" />
+      <section class="section">
+        <h1 class="title">Image - Webp</h1>
+        <img src="assets/image.webp" />
+      </section>
+      <section class="section">
+        <h1 class="title">Image - Avif</h1>
+        <img src="assets/image.avif" />
+      </section>
 
-    <h2>Picture</h2>
-    <picture>
-      <source srcset="./assets/image.avif" type="image/avif" />
-      <source srcset="./assets/image.webp" type="image/webp" />
-      <img src="./assets/image.jpg" />
-    </picture>
+      <section class="section">
+        <h1 class="title">Picture - Avif</h1>
+        <picture>
+          <source srcset="assets/image.avif" type="image/avif" />
+          <img src="assets/image.jpg" />
+        </picture>
+      </section>
+
+      <section class="section">
+        <h1 class="title">Picture - Webp</h1>
+        <picture>
+          <source srcset="assets/image.webp" type="image/webp" />
+          <img src="assets/image.jpg" />
+        </picture>
+      </section>
+
+      <section class="section">
+        <h1 class="title">Picture - Avif &gt; Webp &gt; Jpeg</h1>
+        <picture>
+          <source srcset="assets/image.avif" type="image/avif" />
+          <source srcset="assets/image.webp" type="image/webp" />
+          <img src="assets/image.jpg" />
+        </picture>
+      </section>
+
+      <section class="section">
+        <h1 class="title">Background - Avif</h1>
+        <div id="bg-avif" class="bg-image image is-3by2"></div>
+        <style>
+          #bg-avif {
+            background-image: url(assets/image.avif);
+          }
+        </style>
+      </section>
+
+      <section class="section">
+        <h1 class="title">Background - Webp</h1>
+        <div id="bg-webp" class="bg-image image is-3by2"></div>
+        <style>
+          #bg-webp {
+            background-image: url(assets/image.webp);
+          }
+        </style>
+      </section>
+
+      <section class="section">
+        <h1 class="title">Background - Multi sizes</h1>
+        <div id="bg-image-set-multi-sizes" class="bg-image image is-3by2"></div>
+        <style>
+          #bg-image-set-multi-sizes {
+            background-image: url(assets/image_fallback.jpg);
+            /* Fix Safari */
+            background-image: -webkit-image-set(
+              url(assets/image-webkit.jpg) 1x,
+              url(assets/image-webkit@2x.jpg) 2x
+            );
+            background-image: image-set(
+              url(assets/image.jpg) 1x type('image/jpeg'),
+              url(assets/image@2x.jpg) 2x type('image/jpeg')
+            );
+          }
+        </style>
+      </section>
+
+      <section class="section">
+        <h1 class="title">Background - Multi sizes (avif)</h1>
+        <div
+          id="bg-image-set-multi-sizes-avif"
+          class="bg-image image is-3by2"
+        ></div>
+        <style>
+          #bg-image-set-multi-sizes-avif {
+            background-image: url(assets/image_fallback.jpg);
+            /* Support Safari */
+            background-image: -webkit-image-set(
+              url(assets/image-webkit.avif) 1x,
+              url(assets/image-webkit@2x.avif) 2x
+            );
+            background-image: image-set(
+              url(assets/image.avif) 1x type('image/avif'),
+              url(assets/image@2x.avif) 2x type('image/avif')
+            );
+          }
+        </style>
+      </section>
+
+      <section class="section">
+        <h1 class="title">Background - Multi sizes - force 2x</h1>
+        <div
+          id="bg-image-set-multi-sizes-force-2x"
+          class="bg-image image is-3by2"
+        ></div>
+        <style>
+          #bg-image-set-multi-sizes-force-2x {
+            background-image: url(assets/image_fallback.jpg);
+            /* Support Safari */
+            background-image: -webkit-image-set(
+              url(assets/image-webkit@2x.jpg) 2x
+            );
+            background-image: image-set(
+              url(assets/image@2x.jpg) 2x type('image/jpeg')
+            );
+          }
+        </style>
+      </section>
+
+      <section class="section">
+        <h1 class="title">Background - Multi types</h1>
+        <div id="bg-image-set-multi-types" class="bg-image image is-3by2"></div>
+        <style>
+          #bg-image-set-multi-types {
+            background-image: url(assets/image_fallback.jpg);
+            background-image: -webkit-image-set(
+              url(assets/image-webkit.avif) 1x,
+              url(assets/image-webkit.webp) 1x,
+              url(assets/image-webkit.jpg) 1x
+            );
+
+            background-image: image-set(
+              url(assets/image.avif) type('image/avif'),
+              url(assets/image.webp) type('image/webp'),
+              url(assets/image.jpg) type('image/jpeg')
+            );
+          }
+        </style>
+      </section>
+
+
+      <section class="section">
+        <h1 class="title">Background - Multi types + Multi sizes</h1>
+        <div
+          id="bg-image-set-multi-types-multi-sizes"
+          class="bg-image image is-3by2"
+        ></div>
+        <style>
+          #bg-image-set-multi-types-multi-sizes {
+            background-image: url(assets/image_fallback@2x.jpg);
+
+            background-image: -webkit-image-set(
+              url(assets/image-webkit.avif) 1x,
+              url(assets/image-webkit@2x.avif) 2x,
+              url(assets/image-webkit.webp) 1x,
+              url(assets/image-webkit@2x.webp) 2x,
+              url(assets/image-webkit.jpg) 1x,
+              url(assets/image-webkit@2x.jpg) 2x
+            );
+            background-image: image-set(
+              url(assets/image.avif) 1x type('image/avif'),
+              url(assets/image@2x.avif) 2x type('image/avif'),
+              url(assets/image.webp) 1x type('image/webp'),
+              url(assets/image@2x.webp) 2x type('image/webp'),
+              url(assets/image.jpg) 1x type('image/jpeg'),
+              url(assets/image@2x.jpg) 2x type('image/jpeg')
+            );
+          }
+        </style>
+      </section>
+
+      <section class="section">
+        <h1 class="title">Background - Multi types + Multi sizes - Force 2x</h1>
+        <div
+          id="bg-image-set-multi-types-multi-sizes-force-2x"
+          class="bg-image image is-3by2"
+        ></div>
+        <style>
+          #bg-image-set-multi-types-multi-sizes-force-2x {
+            background-image: url(assets/image_fallback@2x.jpg);
+
+            background-image: -webkit-image-set(
+              url(assets/image-webkit@2x.avif) 2x,
+              url(assets/image-webkit@2x.webp) 2x,
+              url(assets/image-webkit@2x.jpg) 2x
+            );
+            background-image: image-set(
+              url(assets/image@2x.avif) 2x type('image/avif'),
+              url(assets/image@2x.webp) 2x type('image/webp'),
+              url(assets/image@2x.jpg) 2x type('image/jpeg')
+            );
+          }
+        </style>
+      </section>
+    </div>
   </body>
 </html>
